@@ -295,6 +295,22 @@ const Tetris = () => {
     };
   }, [currentPiece, generatePiece, movePiece, mergePiece, gameOver, speedMultiplier, isFastDrop, isClearing]);
 
+  useEffect(() => {
+    const pushAd = () => {
+      try {
+        if (window.adsbygoogle && !window.adsbygooglePushed) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+          window.adsbygooglePushed = true;
+        }
+      } catch (e) {
+        console.error('AdSense error:', e);
+      }
+    };
+
+    // Small delay to ensure the element is rendered
+    setTimeout(pushAd, 100);
+  }, []);
+
   const renderBoard = () => {
     const displayBoard = board.map(row => [...row]);
 
@@ -374,6 +390,20 @@ const Tetris = () => {
             </button>
           </div>
         )}
+      </div>
+
+      <div className="mt-4 w-[728px] h-[90px]">
+        <ins 
+          className="adsbygoogle"
+          style={{ 
+            display: 'inline-block',
+            width: '728px',
+            height: '90px'
+          }}
+          data-ad-client="ca-pub-3478407918599211"
+          data-ad-slot="YOUR_AD_SLOT_ID"
+          data-ad-format="horizontal"
+        ></ins>
       </div>
     </div>
   );
